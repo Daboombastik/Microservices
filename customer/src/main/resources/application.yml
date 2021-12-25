@@ -1,0 +1,6 @@
+server:
+  port: ${APP.PORT}
+
+spring:
+  application:
+    name: customer
