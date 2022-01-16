@@ -4,20 +4,24 @@ import fr.app.customer.entity.CustomerDTO;
 import fr.app.customer.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("api/v1/customer")
+@CrossOrigin(origins = "http://localhost:8081")
+@RequestMapping("api/v1")
 public record CustomerController(CustomerService service) {
 
-    @PostMapping
+    @PostMapping("/customer")
     public ResponseEntity<CustomerDTO> saveCustomer(@RequestBody CustomerDTO customer) {
         log.info("Customer was saved: {}", customer);
         service.registerCustomer(customer);
         return ResponseEntity.<CustomerDTO>ok(customer);
     }
 }
+
+//      {
+//        "firstName":"Clara",
+//        "lastName":"Maria",
+//        "email":"clara_maria@email.com"
+//       }

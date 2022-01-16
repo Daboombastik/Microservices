@@ -1,11 +1,11 @@
 server:
-  port: ${APP.CUSTOMER.PORT}
+  port: ${APP.VERIFICATION.PORT}
 
 spring:
   application:
-    name: customer
+    name: verification
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://localhost:5432/verification
     username: amigoscode
     password: password
   jpa:
