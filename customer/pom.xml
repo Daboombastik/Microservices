@@ -14,6 +14,9 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <verification.version>1.0</verification.version>
+        <database.postgresql.version>42.3.1</database.postgresql.version>
+        <database.h2.version>2.0.206</database.h2.version>
     </properties>
 
     <dependencies>
@@ -28,23 +31,28 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.1</version>
+            <version>${database.postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.0.206</version>
+            <version>${database.h2.version}</version>
             <scope>runtime, test</scope>
         </dependency>
 
         <dependency>
             <groupId>fr.shcherbakov</groupId>
             <artifactId>verification</artifactId>
-            <version>1.0</version>
+            <version>${verification.version}</version>
             <scope>compile</scope>
         </dependency>
 

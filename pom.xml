@@ -11,6 +11,7 @@
     <modules>
         <module>customer</module>
         <module>verification</module>
+        <module>server</module>
     </modules>
 
     <properties>
@@ -18,6 +19,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <springboot.version>2.5.7</springboot.version>
+        <spring.cloud-version>2020.0.5</spring.cloud-version>
     </properties>
 
     <dependencyManagement>
@@ -28,6 +30,14 @@
                 <version>${springboot.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -18,7 +18,8 @@ public record CustomerService(CustomerRepository repository, RestTemplate restTe
                 .build();
         this.repository.saveAndFlush(customer);
         VerificationHistoryDTO response = this.restTemplate.getForObject(
-                "http://localhost:8082/api/v1/verification/{customerId}",
+                "http://verification/api/v1/verification/{customerId}",
+//                "http://localhost:8082/api/v1/verification/{customerId}",
                 VerificationHistoryDTO.class,
                 customer.getId());
         assert response != null;
