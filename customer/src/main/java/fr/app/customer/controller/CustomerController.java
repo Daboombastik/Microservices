@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/customer")
 public record CustomerController(CustomerService service) {
 
-    @PostMapping("/customer")
+    @PostMapping()
     public ResponseEntity<CustomerDTO> saveCustomer(@RequestBody CustomerDTO customer) {
         log.info("Customer was saved: {}", customer);
         service.registerCustomer(customer);
-        return ResponseEntity.<CustomerDTO>ok(customer);
+        return ResponseEntity.ok(customer);
     }
 }
 

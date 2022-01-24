@@ -9,13 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>customer</artifactId>
+    <artifactId>notification</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <verification.version>1.0</verification.version>
-        <notification.version>1.0</notification.version>
         <database.postgresql.version>42.3.1</database.postgresql.version>
         <database.h2.version>2.0.206</database.h2.version>
     </properties>
@@ -49,20 +47,6 @@
             <version>${database.h2.version}</version>
             <scope>runtime, test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>fr.shcherbakov</groupId>
-            <artifactId>verification</artifactId>
-            <version>${verification.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>fr.shcherbakov</groupId>
-            <artifactId>notification</artifactId>
-            <version>${notification.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
 </project>
