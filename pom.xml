@@ -13,6 +13,8 @@
         <module>verification</module>
         <module>server</module>
         <module>notification</module>
+        <module>api_gateway</module>
+        <module>message_queue</module>
     </modules>
 
     <properties>

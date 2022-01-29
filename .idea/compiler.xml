@@ -9,6 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="server" />
         <module name="notification" />
+        <module name="message_queue" />
+        <module name="api_gateway" />
         <module name="verification" />
         <module name="customer" />
       </profile>

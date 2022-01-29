@@ -20,6 +20,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>fr.shcherbakov</groupId>
+            <artifactId>message_queue</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -35,6 +41,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${database.postgresql.version}</version>
@@ -45,7 +56,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${database.h2.version}</version>
-            <scope>runtime, test</scope>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 

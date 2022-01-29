@@ -1,16 +1,14 @@
-package fr.app.notification;
+package fr.app.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@SpringBootApplication(
-        scanBasePackages = {"fr.app.notification", "fr.app.amqp"}
-)
 @EnableEurekaClient
-public class NotificationApplication {
-
+@SpringBootApplication
+public class ApiGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NotificationApplication.class, args);
+
+        SpringApplication.run(ApiGatewayApplication.class, args);
     }
 }
