@@ -1,21 +1,22 @@
 package fr.app.customer.service;
 
+import fr.app.amqp.config.RabbitMQConfig;
 import fr.app.customer.entity.Customer;
 import fr.app.customer.entity.CustomerDTO;
 import fr.app.notification.entity.NotificationDTO;
 import fr.app.verification.entity.VerificationHistoryDTO;
 import fr.app.amqp.producer.RabbitMQProducer;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import fr.app.customer.repository.CustomerRepository;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@AllArgsConstructor
-public class CustomerService {
-    CustomerRepository repository;
-    RestTemplate restTemplate;
-    RabbitMQProducer producer;
+public record CustomerService(
+        CustomerRepository repository,
+        RestTemplate restTemplate,
+        RabbitMQProducer<NotificationDTO> producer,
+        RabbitMQConfig rabbitMQConfig) {
+
 
     public void registerCustomer(CustomerDTO request) {
         var customer = Customer.builder()
@@ -35,20 +36,21 @@ public class CustomerService {
             throw new IllegalArgumentException("Attention: fraud detected");
         }
         //-------------------
-        NotificationDTO notification = new NotificationDTO(
-                customer.getId(),
-                customer.getEmail(),
-                String.format("Hi %s!", customer.getFirstName())
-        );
-        /*instead of direct call to notification use rabbitMQ
+        /*
+        instead of direct call to notification use rabbitMQ
                 this.restTemplate.postForObject(
                 "http://notification/api/v1/notification",
                 notification,
                 NotificationDTO.class);
          */
+        NotificationDTO notification = new NotificationDTO(
+                customer.getId(),
+                customer.getEmail(),
+                String.format("Hi %s!", customer.getFirstName())
+        );
         producer.publish(
-                "internal.exchange",
-                "internal.notification.routing-key",
+                rabbitMQConfig.getExchangeForNotification(),
+                rabbitMQConfig.getRoutingKeyForNotification(),
                 notification
         );
     }

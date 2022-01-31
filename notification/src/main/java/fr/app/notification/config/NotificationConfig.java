@@ -19,7 +19,7 @@ public class NotificationConfig {
     @Value("${rabbitmq.queues.notification}")
     private String notificationQueue;
 
-    @Value("${rabbitmq.routing-keys.internal-notification}")
+    @Value("${rabbitmq.routing-keys.notification}")
     private String internalNotificationRoutingKey;
 
     @Bean
